@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>jt-giffy</string>
+	<key>category</key>
+	<string>Internet</string>
+	<key>connections</key>
+	<dict>
+		<key>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>53EC92C8-88F3-4E6C-8D21-85C383647950</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>75388AA3-31CF-41CE-BF91-B586612B5368</string>
+				<key>modifiers</key>
+				<integer>524288</integer>
+				<key>modifiersubtext</key>
+				<string>Paste immediately</string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Justin Sternberg</string>
+	<key>description</key>
+	<string></string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Giffy</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>53EC92C8-88F3-4E6C-8D21-85C383647950</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>wdsgiffy</string>
+				<key>script</key>
+				<string>&lt;?php 
+require_once('extension_utils.php');
+$utils = new ExtensionUtils();
+
+$q = '{query}';
+
+$ch = curl_init(); 
+curl_setopt($ch, CURLOPT_URL, 'http://jtsternberg.com/?json&amp;gifs={$q}' ); 
+curl_setopt($ch, CURLOPT_HEADER, TRUE); 
+curl_setopt($ch, CURLOPT_NOBODY, TRUE); // remove body 
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE); 
+$head = curl_exec($ch); 
+$http_info = curl_getinfo($ch, CURLINFO_HTTP_CODE); 
+curl_close($ch); 
+
+$list = json_decode( $http_info );
+
+$results = array();
+
+foreach( $list['data'] as $emot =&gt; $img ) {
+	$name = basename( $img );
+
+	if ( !empty($q) &amp;&amp;
+		strpos( $emot, $q ) === false &amp;&amp;
+		strpos( $name, $q ) === false
+	) continue;
+	$results[] = array(
+		'title' =&gt; $name,
+		// 'icon' =&gt; 'filetype',
+		'icon' =&gt; $img,
+		'valid' =&gt; '',
+		'uid' =&gt; '',
+		'subtitle' =&gt; "Copy to clipboard",
+		'arg' =&gt; "($emot)"
+	);
+}
+
+echo $utils-&gt;toXml( $results );</string>
+				<key>title</key>
+				<string>WDS Giffy</string>
+				<key>type</key>
+				<integer>1</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<true/>
+				<key>clipboardtext</key>
+				<string></string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>75388AA3-31CF-41CE-BF91-B586612B5368</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>53EC92C8-88F3-4E6C-8D21-85C383647950</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>75388AA3-31CF-41CE-BF91-B586612B5368</key>
+		<dict>
+			<key>ypos</key>
+			<real>160</real>
+		</dict>
+		<key>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</key>
+		<dict>
+			<key>ypos</key>
+			<real>60</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>jtsternberg.com/alfredapp</string>
+</dict>
+</plist>
