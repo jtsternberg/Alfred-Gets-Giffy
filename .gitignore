@@ -25,4 +25,6 @@ Temporary Items
 
 # Stuff
 feed-cache/*
+!feed-cache/index.php
 gifs-cache/*
+!gifs-cache/index.php
