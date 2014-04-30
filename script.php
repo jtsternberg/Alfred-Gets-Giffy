@@ -8,6 +8,12 @@ $day_ago = time() - 60*60*24;
 $q       = '{query}';
 // $q       = 'cat';
 
+if ( 'refeed' == $q ) {
+	unlink( $feed );
+	echo $utils->toxml( array( 'query' => array( 'title' => 'Cache deleted!' ) ) );
+	return;
+}
+
 if ( file_exists( $feed ) ) {
 	$modified_time = filemtime( $feed );
 
@@ -56,7 +62,7 @@ foreach( $list->data as $filename => $img ) {
 	$counter++;
 }
 
-echo $utils->toXml( $results );
+echo $utils->toxml( $results );
 
 clean_cached_gifs( $gif_dir );
 cache_gif_thumbs( $files_to_be_cached );

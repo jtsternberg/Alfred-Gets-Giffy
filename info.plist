@@ -74,6 +74,12 @@ $day_ago = time() - 60*60*24;
 $q       = '{query}';
 // $q       = 'cat';
 
+if ( 'refeed' == $q ) {
+	unlink( $feed );
+	echo $utils-&gt;toxml( array( 'query' =&gt; array( 'title' =&gt; 'Cache deleted!' ) ) );
+	return;
+}
+
 if ( file_exists( $feed ) ) {
 	$modified_time = filemtime( $feed );
 
@@ -122,11 +128,10 @@ foreach( $list-&gt;data as $filename =&gt; $img ) {
 	$counter++;
 }
 
-echo $utils-&gt;toXml( $results );
+echo $utils-&gt;toxml( $results );
 
 clean_cached_gifs( $gif_dir );
-cache_gif_thumbs( $files_to_be_cached );
-</string>
+cache_gif_thumbs( $files_to_be_cached );</string>
 				<key>title</key>
 				<string>WDS Giffy</string>
 				<key>type</key>
@@ -174,7 +179,7 @@ cache_gif_thumbs( $files_to_be_cached );
 		<key>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</key>
 		<dict>
 			<key>ypos</key>
-			<real>60</real>
+			<real>70</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>

@@ -37,7 +37,6 @@ function clean_cached_gifs( $gif_dir ) {
 		}
 	}
 
-
 }
 
 class ExtensionUtils {
