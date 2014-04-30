@@ -8,7 +8,7 @@ $day_ago = time() - 60*60*24;
 $q       = '{query}';
 // $q       = 'cat';
 
-if ( 'refeed' == $q ) {
+if ( in_array( $q, array( 'refeed', 'refresh' ), true ) ) {
 	unlink( $feed );
 	echo $utils->toxml( array( 'query' => array( 'title' => 'Cache deleted!' ) ) );
 	return;
