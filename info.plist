@@ -26,6 +26,14 @@
 				<key>modifiersubtext</key>
 				<string>Paste immediately</string>
 			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>975C89DF-A069-47A2-8E58-02B772D2CEBE</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Open in Browser</string>
+			</dict>
 		</array>
 	</dict>
 	<key>createdby</key>
@@ -161,6 +169,23 @@ cache_gif_thumbs( $files_to_be_cached );</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>plusspaces</key>
+				<false/>
+				<key>url</key>
+				<string>{query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>975C89DF-A069-47A2-8E58-02B772D2CEBE</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
@@ -180,6 +205,11 @@ cache_gif_thumbs( $files_to_be_cached );</string>
 		<dict>
 			<key>ypos</key>
 			<real>70</real>
+		</dict>
+		<key>975C89DF-A069-47A2-8E58-02B772D2CEBE</key>
+		<dict>
+			<key>ypos</key>
+			<real>320</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>
