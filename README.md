@@ -1,4 +1,4 @@
-Alfred Gets Giffy (with it)
+Alfred Gets Giffy (wit it)
 =================
 
 Alfred workflow to search WDS Giffy.
