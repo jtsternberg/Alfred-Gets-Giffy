@@ -1,7 +1,7 @@
 Alfred Gets Giffy (wit it)
 =================
 
-Alfred workflow to search WDS Giffy.
+Alfred workflow to search [WDS Giffy](http://jtsternberg.com/?gifs).
 
 * To install: double-click `Giffy.alfredworkflow` and it should install to alfredapp.
 * Keyword: `giffy`  
